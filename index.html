@@ -1,38 +1,23 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="theme-color" content="#101b20">
-  <meta name="description" content="Run the hidden forest path. Jump, slide and gather chakra in SHINOBI: The Living Journey.">
-  <title>SHINOBI — The Living Journey</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101b20">
+  <meta name="description" content="Begin your own shinobi journey in a small story-driven adventure."><title>SHINOBI — The Living Journey</title><link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="shell">
-    <header class="brand"><span class="crest" aria-hidden="true">忍</span><div><h1>SHINOBI</h1><p>THE LIVING JOURNEY</p></div></header>
-    <section class="game-card" aria-label="Shinobi endless runner">
-      <canvas id="game" width="960" height="480" aria-label="Game scene. Use Space or Up to jump, Down to slide, and P to pause."></canvas>
-      <div class="hud" id="hud" hidden>
-        <div><span class="label">SCORE</span><strong id="score">0</strong></div>
-        <div><span class="label">DISTANCE</span><strong><span id="distance">0</span><small>m</small></strong></div>
-        <div class="collect"><span class="orb-icon">✦</span><strong id="chakra">0</strong></div>
-        <div class="collect"><span class="scroll-icon">卷</span><strong id="scrolls">0</strong></div>
-        <button id="pause" class="icon-button" aria-label="Pause">Ⅱ</button>
-      </div>
-      <section class="screen" id="menu">
-        <p class="eyebrow">A FOREST RUN BEGINS</p><h2>Find your<br><em>own path.</em></h2>
-        <p class="screen-copy">Run through the hidden forest. Gather chakra.<br>Trust your instincts.</p>
-        <button id="start" class="primary">START GAME <span>→</span></button>
-        <p class="controls">SPACE / ↑ <b>JUMP</b><i>·</i> ↓ <b>SLIDE</b></p>
-        <p class="best-line">BEST <strong id="menuBest">0</strong></p>
-      </section>
-      <section class="screen compact" id="paused" hidden><p class="eyebrow">TAKE A BREATH</p><h2>Paused</h2><button id="resume" class="primary">RESUME <span>→</span></button><p class="controls">PRESS P TO CONTINUE</p></section>
-      <section class="screen compact" id="over" hidden><p class="eyebrow">THE PATH CONTINUES</p><h2>Run complete.</h2><div class="results"><span>SCORE <b id="finalScore">0</b></span><span>DISTANCE <b id="finalDistance">0m</b></span><span>CHAKRA <b id="finalChakra">0</b></span><span>SCROLLS <b id="finalScrolls">0</b></span><span>BEST <b id="finalBest">0</b></span></div><div class="actions"><button id="retry" class="primary">RUN AGAIN <span>↻</span></button><button id="home" class="secondary">MAIN MENU</button></div></section>
-      <div class="hint" id="hint" hidden>SPACE / ↑ JUMP <i>·</i> ↓ SLIDE <i>·</i> P PAUSE</div>
-    </section>
-    <footer><span>忍 <i>THE WAY IS MADE BY WALKING.</i></span><span>PRESS <b>R</b> TO RESTART</span></footer>
-  </main>
-  <script src="game.js"></script>
-</body>
-</html>
+<body><main class="shell">
+  <header class="brand"><span class="crest" aria-hidden="true">忍</span><div><h1>SHINOBI</h1><p>THE LIVING JOURNEY <span>·</span> STAGE 1: THE AWAKENING</p></div><button id="soundToggle" class="sound-toggle" aria-label="Toggle sound effects">♫</button></header>
+  <section class="game-card" id="gameCard" aria-label="Shinobi: The Living Journey">
+    <canvas id="game" width="960" height="480" aria-label="Endless Journey game scene"></canvas><canvas id="world" width="960" height="540" aria-label="Explore the village and forest"></canvas>
+    <div class="hud" id="hud" hidden><div><span class="label">SCORE</span><strong id="score">0</strong></div><div><span class="label">DISTANCE</span><strong><span id="distance">0</span><small>m</small></strong></div><div class="collect"><span class="orb-icon">✦</span><strong id="chakra">0</strong></div><div class="collect"><span class="scroll-icon">卷</span><strong id="scrolls">0</strong></div><button id="pause" class="icon-button" aria-label="Pause">Ⅱ</button></div>
+    <section class="screen home-screen" id="menu"><p class="eyebrow">STAGE 1 · THE AWAKENING</p><h2>Every journey<br>begins <em>somewhere.</em></h2><p class="screen-copy">A quiet village. A new name. A path still unwritten.</p><div class="menu-actions"><button id="begin" class="primary">BEGIN JOURNEY <span>→</span></button><button id="continue" class="secondary">CONTINUE</button><button id="endless" class="secondary">ENDLESS JOURNEY</button></div><div class="menu-foot"><button id="aboutButton" class="text-button">ABOUT</button><button id="settingsButton" class="text-button">SETTINGS</button><span class="best-line">RUNNER BEST <strong id="menuBest">0</strong></span></div></section>
+    <section class="screen compact" id="paused" hidden><p class="eyebrow">TAKE A BREATH</p><h2>Paused</h2><button id="resume" class="primary">RESUME <span>→</span></button><p class="controls">PRESS P TO CONTINUE</p></section>
+    <section class="screen compact" id="over" hidden><p class="eyebrow">THE PATH CONTINUES</p><h2>Run complete.</h2><div class="results"><span>SCORE <b id="finalScore">0</b></span><span>DISTANCE <b id="finalDistance">0m</b></span><span>CHAKRA <b id="finalChakra">0</b></span><span>SCROLLS <b id="finalScrolls">0</b></span><span>BEST <b id="finalBest">0</b></span></div><div class="actions"><button id="retry" class="primary">RUN AGAIN <span>↻</span></button><button id="home" class="secondary">MAIN MENU</button></div></section>
+    <section class="story-hud" id="storyHud" hidden><div><span id="placeName">HIDDEN LEAF VILLAGE</span><strong id="objectiveText">Talk to Iruka</strong></div><div class="story-actions"><button id="missionButton" class="secondary small" hidden>MISSION</button><button id="storyMenu" class="icon-button" aria-label="Open menu">☰</button></div></section>
+    <div class="interact-prompt" id="interactPrompt" hidden><span>E</span><b id="promptText">Talk</b><button id="interactButton">INTERACT</button></div>
+    <section class="screen create-screen" id="create" hidden><div class="create-card"><p class="eyebrow">YOUR STORY STARTS HERE</p><h2>Who will you become?</h2><label class="field-label" for="characterName">SHINOBI NAME</label><input id="characterName" maxlength="18" placeholder="Choose a name" autocomplete="off"><div class="custom-row"><fieldset><legend>APPEARANCE</legend><div class="choice-row" id="appearanceChoices"><button class="swatch selected" data-value="0">✦ <small>Warm</small></button><button class="swatch" data-value="1">✦ <small>Bright</small></button><button class="swatch" data-value="2">✦ <small>Calm</small></button></div></fieldset><fieldset><legend>OUTFIT</legend><div class="choice-row" id="outfitChoices"><button class="swatch selected" data-value="0">◈ <small>Leaf</small></button><button class="swatch" data-value="1">◈ <small>River</small></button><button class="swatch" data-value="2">◈ <small>Dusk</small></button></div></fieldset></div><div class="preview"><canvas id="preview" width="120" height="130"></canvas><span>Your shinobi, ready for the first step.</span></div><div class="actions"><button id="createBack" class="secondary">BACK</button><button id="createStart" class="primary">BEGIN <span>→</span></button></div></div></section>
+    <section class="screen intro-screen" id="intro" hidden><p class="eyebrow">A NEW JOURNEY</p><div class="chapter-mark">木ノ葉</div><p class="intro-line" id="introLine"></p><div class="intro-progress" id="introProgress"></div><button id="introNext" class="primary">CONTINUE <span>→</span></button><button id="introSkip" class="text-button">SKIP INTRO</button></section>
+    <section class="screen panel-screen" id="panelScreen" hidden><article class="panel"><button class="panel-close" id="panelClose" aria-label="Close">×</button><p class="eyebrow" id="panelEyebrow">JOURNEY</p><h2 id="panelTitle"></h2><div class="panel-content" id="panelContent"></div><div class="panel-actions" id="panelActions"></div></article></section>
+    <div class="hint" id="hint" hidden>SPACE / ↑ JUMP <i>·</i> ↓ SLIDE <i>·</i> P PAUSE <i>·</i> R RESTART</div>
+    <div class="touch-pad" id="touchPad" hidden><button data-dir="up" aria-label="Move up">↑</button><div><button data-dir="left" aria-label="Move left">←</button><button data-dir="down" aria-label="Move down">↓</button><button data-dir="right" aria-label="Move right">→</button></div></div>
+  </section><footer><span>忍 <i>THE WAY IS MADE BY WALKING.</i></span><span id="footerControls">A SMALL ADVENTURE, ONE CHOICE AT A TIME.</span></footer>
+</main><script src="game.js"></script></body></html>
